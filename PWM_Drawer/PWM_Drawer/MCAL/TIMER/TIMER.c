@@ -284,7 +284,7 @@ void TIMER_GET_DUTY_CYCLE_AND_FREQUENCY(uint8_t * duty_cycle, uint32_t * frequen
 	
 	ton  = capture_values[1] - capture_values[0];
 	
-	time = capture_values[2] - capture_values[1];
+	time = capture_values[2] - capture_values[0];
 	
 	*duty_cycle = (uint8_t) (((uint32_t) ton * 100) / time);
 	*frequency	=  ICU_FREQ_4_US_DIVIDER / (uint32_t) time;

@@ -6,7 +6,6 @@
  */ 
 
 #include "main.h"
-
 int main(void)
 {
     
@@ -23,17 +22,19 @@ int main(void)
 	
 	TIMER_INIT(CHANNEL_1, ICU_MODE, ICU_PRESCALER);
 	
+	TIMER_GET_DUTY_CYCLE_AND_FREQUENCY(&duty, &freq);
+	_delay_ms(1000);
+	
+	time = ((1 / ((fint32_t) freq)) * 1000000);
+	
 	LCD_INIT();
 	LCD_CLR();
-	
+	// duty = 20;
     while (1) 
     {
 		LCD_CLR();
 		
-		TIMER_GET_DUTY_CYCLE_AND_FREQUENCY(&duty, &freq);
-		_delay_ms(1000);
 		
-		time = ((1 / ((fint32_t) freq)) * 1000000);
 		LCD_WRITE_STR((uint8_t *) "freq= ");
 		LCD_WRITE_NUM(freq);
 		LCD_WRITE_STR((uint8_t *) " Hz");
@@ -49,10 +50,10 @@ int main(void)
 		LCD_NEXT_LINE();
 		
 		uint8_t i, j;
-		uint8_t up = (duty)/ 35 + 1;
-		uint8_t down = up;
+		uint16_t up = duty / 10;
+		uint16_t down = 10 - up;
 		
-		uint8_t loop_count = 40 / (up * 2);
+		uint8_t loop_count = 40 / (up + down);
 		for (i = 0; i < loop_count; i++)
 		{
 			for (j = 0; j < down; j++)
