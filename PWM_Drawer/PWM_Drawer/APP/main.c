@@ -6,13 +6,13 @@
  */ 
 
 #include "main.h"
+
+uint8_t duty;
+
 int main(void)
 {
-    
-    uint8_t duty;
     fint32_t time;
     uint32_t freq;
-	
 	DIO_SET_PIN_DIR(DIO_PORTB, DIO_PIN3, DIO_OUT);
 	DIO_SET_PIN_DIR(DIO_PORTD, DIO_PIN6, DIO_IN);
 	
@@ -29,7 +29,7 @@ int main(void)
 	
 	LCD_INIT();
 	LCD_CLR();
-	// duty = 20;
+	// duty = 0;
     while (1) 
     {
 		LCD_CLR();

@@ -90,6 +90,11 @@ void LCD_WRITE_STR(uint8_t * s)
 
 void LCD_WRITE_NUM(uint32_t num)
 {
+	if (num == 0)
+	{
+		LCD_WRITE_CHAR('0');
+		return;
+	}
 	uint8_t num_str[10];
 	IntegerToString(num_str, num);
 	LCD_WRITE_STR(num_str);

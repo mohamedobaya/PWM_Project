@@ -290,6 +290,18 @@ void TIMER_GET_DUTY_CYCLE_AND_FREQUENCY(uint8_t * duty_cycle, uint32_t * frequen
 	*frequency	=  ICU_FREQ_4_US_DIVIDER / (uint32_t) time;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 //--------------------------------------------------------------------------------------------//
 // Timers ISRs
 
